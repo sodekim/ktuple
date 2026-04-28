@@ -1,4 +1,4 @@
-package io.github.wan2dev.ktuple
+package io.github.sodekim.ktuple
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -9,16 +9,16 @@ import kotlin.test.assertIs
  *
  * @author w-sodalite@hotmail.com
  */
-class Tuple6Test {
+class Tuple2Test {
 
-    val tuple = Tuple(1, 2, 3, 4, 5, 6)
+    val tuple = Tuple(1, 2)
 
     @Test
     fun test() {
         assert(tuple.isNotEmpty())
         assertFalse(tuple.isEmpty())
         assertEquals(
-            6,
+            2,
             tuple.size
         )
         assertEquals(
@@ -30,46 +30,28 @@ class Tuple6Test {
             tuple.second
         )
         assertEquals(
-            3,
-            tuple.third
-        )
-        assertEquals(
-            4,
-            tuple.fourth
-        )
-        assertEquals(
-            5,
-            tuple.fifth
-        )
-        assertEquals(
-            6,
-            tuple.sixth
-        )
-        assertEquals(
-            "(1, 2, 3, 4, 5, 6)",
+            "(1, 2)",
             tuple.toString()
         )
         assertEquals(
-            Tuple(1, 2, 3, 4, 5, 6, 7),
-            tuple.append(7)
+            Tuple(1, 2, 3),
+            tuple.append(3)
         )
         assertEquals(
-            Tuple(2, 4, 6, 8, 10, 12),
-            tuple.map { first, second, third, fourth, fifth, sixth ->
-                Tuple(first * 2, second * 2, third * 2, fourth * 2, fifth * 2, sixth * 2)
-            }
+            Tuple(2, 4),
+            tuple.map { first, second -> Tuple(first * 2, second * 2) }
         )
         assertEquals(
-            21,
-            tuple { first, second, third, fourth, fifth, sixth -> first + second + third + fourth + fifth + sixth }
+            3,
+            tuple { first, second -> first + second }
         )
 
         val list = tuple.toList()
         val mlist: List<Any?> = tuple.toMutableList()
         val set = tuple.toSet()
         val mset: Set<Any?> = tuple.toMutableSet()
-        val elist = listOf(1, 2, 3, 4, 5, 6)
-        val eset = setOf(1, 2, 3, 4, 5, 6)
+        val elist = listOf(1, 2)
+        val eset = setOf(1, 2)
         assertEquals(elist, list)
         assertEquals(elist, mlist)
         assertEquals(eset, set)

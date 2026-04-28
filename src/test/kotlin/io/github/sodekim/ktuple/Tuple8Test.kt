@@ -1,4 +1,4 @@
-package io.github.wan2dev.ktuple
+package io.github.sodekim.ktuple
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

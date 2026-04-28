@@ -1,4 +1,4 @@
-package io.github.wan2dev.ktuple
+package io.github.sodekim.ktuple
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -9,16 +9,16 @@ import kotlin.test.assertIs
  *
  * @author w-sodalite@hotmail.com
  */
-class Tuple4Test {
+class Tuple7Test {
 
-    val tuple = Tuple(1, 2, 3, 4)
+    val tuple = Tuple(1, 2, 3, 4, 5, 6, 7)
 
     @Test
     fun test() {
         assert(tuple.isNotEmpty())
         assertFalse(tuple.isEmpty())
         assertEquals(
-            4,
+            7,
             tuple.size
         )
         assertEquals(
@@ -38,30 +38,42 @@ class Tuple4Test {
             tuple.fourth
         )
         assertEquals(
-            "(1, 2, 3, 4)",
+            5,
+            tuple.fifth
+        )
+        assertEquals(
+            6,
+            tuple.sixth
+        )
+        assertEquals(
+            7,
+            tuple.seventh
+        )
+        assertEquals(
+            "(1, 2, 3, 4, 5, 6, 7)",
             tuple.toString()
         )
         assertEquals(
-            Tuple(1, 2, 3, 4, 5),
-            tuple.append(5)
+            Tuple(1, 2, 3, 4, 5, 6, 7, 8),
+            tuple.append(8)
         )
         assertEquals(
-            Tuple(2, 4, 6, 8),
-            tuple.map { first, second, third, fourth ->
-                Tuple(first * 2, second * 2, third * 2, fourth * 2)
+            Tuple(2, 4, 6, 8, 10, 12, 14),
+            tuple.map { first, second, third, fourth, fifth, sixth, seventh ->
+                Tuple(first * 2, second * 2, third * 2, fourth * 2, fifth * 2, sixth * 2, seventh * 2)
             }
         )
         assertEquals(
-            10,
-            tuple { first, second, third, fourth -> first + second + third + fourth }
+            28,
+            tuple { first, second, third, fourth, fifth, sixth, seventh -> first + second + third + fourth + fifth + sixth + seventh }
         )
 
         val list = tuple.toList()
         val mlist: List<Any?> = tuple.toMutableList()
         val set = tuple.toSet()
         val mset: Set<Any?> = tuple.toMutableSet()
-        val elist = listOf(1, 2, 3, 4)
-        val eset = setOf(1, 2, 3, 4)
+        val elist = listOf(1, 2, 3, 4, 5, 6, 7)
+        val eset = setOf(1, 2, 3, 4, 5, 6, 7)
         assertEquals(elist, list)
         assertEquals(elist, mlist)
         assertEquals(eset, set)
